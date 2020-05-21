@@ -9,6 +9,7 @@ import (
 
 func main() {
 	e := echo.New()
+	const PORT = "1323"
 	p := new(model.Product)
 	o := new(model.Order)
 	e.GET("/", func(c echo.Context) error {
@@ -17,5 +18,5 @@ func main() {
 	e.GET("products/:id", p.GetProductByID)
 	e.GET("products", p.GetProducts)
 	e.POST("products/:id/order", o.Create)
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":" + PORT))
 }
